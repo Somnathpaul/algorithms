@@ -22,6 +22,8 @@ class Tree(object):
             return self.preorder(tree.root, "")
         elif traversal_type == "postorder":
             return self.postorder(tree.root, "")
+        elif traversal_type == "inorder" :
+            return self.inorder(tree.root, "")
         else:
             print("Traversal type " + str(traversal_type) + " is not supported.")
             return False
@@ -46,7 +48,16 @@ class Tree(object):
             traversal = traversal + (str(start.value) + "-")
 
         return traversal
+    
+    def inorder(self, start, traversal):
+        # node visiting parten 
+        """ left root right """
+        if start:
+            traversal = self.inorder(start.left, traversal)
+            traversal = traversal + (str(start.value) + "-")
+            traversal = self.inorder(start.right, traversal)
 
+        return traversal
 
 
 # Set up tree:
@@ -58,5 +69,7 @@ tree.root.left.right = Node(5)
 tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
+
 print(tree.print("preorder"))
 print(tree.print("postorder"))
+print(tree.print("inorder"))
