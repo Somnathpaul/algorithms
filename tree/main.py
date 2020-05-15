@@ -20,6 +20,8 @@ class Tree(object):
     def print(self, traversal_type):
         if traversal_type == "preorder":
             return self.preorder(tree.root, "")
+        elif traversal_type == "postorder":
+            return self.postorder(tree.root, "")
         else:
             print("Traversal type " + str(traversal_type) + " is not supported.")
             return False
@@ -34,7 +36,16 @@ class Tree(object):
             traversal = self.preorder(start.right, traversal)
 
         return traversal
+ 
+    def postorder(self, start, traversal):
+        # node visiting parten 
+        """ Left->Right->Root """
+        if start:
+            traversal = self.postorder(start.left, traversal)
+            traversal = self.postorder(start.right, traversal)
+            traversal = traversal + (str(start.value) + "-")
 
+        return traversal
 
 
 
@@ -48,3 +59,4 @@ tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
 print(tree.print("preorder"))
+print(tree.print("postorder"))
