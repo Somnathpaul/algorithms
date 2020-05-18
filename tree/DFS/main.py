@@ -33,7 +33,7 @@ class Tree(object):
         """Root->Left->Right"""
 
         if start:
-            traversal = traversal + (str(start.value))
+            traversal = traversal + (str(start.value)+ "-")
             traversal = self.preorder(start.left, traversal)
             traversal = self.preorder(start.right, traversal)
 
@@ -45,7 +45,7 @@ class Tree(object):
         if start:
             traversal = self.postorder(start.left, traversal)
             traversal = self.postorder(start.right, traversal)
-            traversal = traversal + (str(start.value))
+            traversal = traversal + (str(start.value)+ "-")
 
         return traversal
     
@@ -54,7 +54,7 @@ class Tree(object):
         """ left root right """
         if start:
             traversal = self.inorder(start.left, traversal)
-            traversal = traversal + (str(start.value))
+            traversal = traversal + (str(start.value)+ "-")
             traversal = self.inorder(start.right, traversal)
 
         return traversal
@@ -73,3 +73,5 @@ tree.root.right.right = Node(7)
 print(tree.print("preorder"))
 print(tree.print("postorder"))
 print(tree.print("inorder"))
+
+
