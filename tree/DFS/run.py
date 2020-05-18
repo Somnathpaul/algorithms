@@ -46,7 +46,16 @@ def postorder(root):
 # A function to do postorder tree traversal 
 def preorder(root):
     if root:
-        #
+        
+        # First print the data of node 
+        traversal_preorder.append(root.value), 
+  
+        # Then recur on left child 
+        preorder(root.left) 
+  
+        # Finally recur on right child 
+        preorder(root.right) 
+
 
 # Set up tree:
 root = Node(1)
