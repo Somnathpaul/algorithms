@@ -1,4 +1,4 @@
-
+# Breadth first search : 
 #               1
 #           /       \  
 #          2          3  
@@ -19,11 +19,11 @@ class Tree(object):
     
     def print(self, traversal_type):
         if traversal_type == "preorder":
-            return self.preorder(tree.root, "")
+            return self.preorder(tree.root,"")
         elif traversal_type == "postorder":
-            return self.postorder(tree.root, "")
+            return self.postorder(tree.root,"")
         elif traversal_type == "inorder" :
-            return self.inorder(tree.root, "")
+            return self.inorder(tree.root,"")
         else:
             print("Traversal type " + str(traversal_type) + " is not supported.")
             return False
@@ -33,7 +33,7 @@ class Tree(object):
         """Root->Left->Right"""
 
         if start:
-            traversal = traversal + (str(start.value) + "-")
+            traversal = traversal + (str(start.value))
             traversal = self.preorder(start.left, traversal)
             traversal = self.preorder(start.right, traversal)
 
@@ -45,7 +45,7 @@ class Tree(object):
         if start:
             traversal = self.postorder(start.left, traversal)
             traversal = self.postorder(start.right, traversal)
-            traversal = traversal + (str(start.value) + "-")
+            traversal = traversal + (str(start.value))
 
         return traversal
     
@@ -54,7 +54,7 @@ class Tree(object):
         """ left root right """
         if start:
             traversal = self.inorder(start.left, traversal)
-            traversal = traversal + (str(start.value) + "-")
+            traversal = traversal + (str(start.value))
             traversal = self.inorder(start.right, traversal)
 
         return traversal
