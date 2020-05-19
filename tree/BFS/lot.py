@@ -3,8 +3,8 @@ class Queue(object):
     def __init__(self):
         self.items = []
 
-    def enqueue(self, value):
-        self.items.insert(0, value)
+    def enqueue(self, items):
+        self.items.insert(0, items)
 
     def dequeue(self):
         self.items.pop()
@@ -36,7 +36,7 @@ class Tree(object):
 
     def print_tree(self, traversal_type):
         if traversal_type == "levelorder":
-            return self.levelorder(tree.root, "")
+            return self.levelorder(tree.root)
 
         else:
             print("Traversal type " , str(traversal_type), "is not supported")
