@@ -28,17 +28,18 @@ class Tree(object):
   # postorder function
   """ Left->Right->Root """
   def postorder(self, root):
-    # First recur on left child 
-    self.postorder(root.left) 
+    if root:
+      # First recur on left child 
+      self.postorder(root.left) 
   
-    # the recur on right child 
-    self.postorder(root.right) 
+      # the recur on right child 
+      self.postorder(root.right) 
   
-    # now print the data of node 
-    output = Output()
-    output.push(root.value)
-    #self.traversal.append(root.value, self.traversal)
-    print(root.value)
+      # now print the data of node 
+      output = Output()
+      output.push(root.value)
+      #self.traversal.append(root.value, self.traversal)
+      print(root.value)
   
 
 
