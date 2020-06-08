@@ -11,36 +11,18 @@ class Node(object):
     self.right = None
     self.left = None
 
-# helper function
-class Output(object):
-  def __init__(self):
-    self.traversal = []
-  
-  def push(self, value):
-    self.traversal.append(value)
-  
-  def show(self):
-    return self.traversal
-
-  def size(self):
-    return len(self.traversal)
-
-  def __len__(self):
-    return self.size()
 
 # tree 
 class Tree(object):
   def __init__(self, root):
     self.root = Node(root)  
   
-  def print(self):
-    # creating object of class 
-    output = Output()
-    return output.show()
 
   # postorder function
   """ Left->Right->Root """
   def postorder(self, root):
+    if root is None: 
+      return
     if root:
       output = Output()
 
@@ -73,6 +55,23 @@ class Tree(object):
       self.preorder(root.right)
 
 
+# helper function
+class Output(object):
+  def __init__(self):
+    self.traversal = []
+  
+  def push(self, value):
+    self.traversal.append(value)
+  
+  def show(self):
+    print(self.traversal)
+    print(self.size())
+
+  def size(self):
+    return len(self.traversal)
+
+  def __len__(self):
+    return self.size()
 
 
 
@@ -88,5 +87,6 @@ tree.root.right.right = Node(7)
 
 #tree.preorder(tree.root)
 tree.postorder(tree.root)
-print(tree.print())
-
+o = Output()
+o.show()
+o.size()

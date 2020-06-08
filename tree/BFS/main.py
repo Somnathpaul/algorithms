@@ -1,4 +1,13 @@
 
+
+
+class Node(object):
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+
   
 class Queue(object):
     def __init__(self):
@@ -23,13 +32,6 @@ class Queue(object):
 
     def size(self):
         return len(self.items)
-
-
-class Node(object):
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
 
 
 class Tree(object):
