@@ -11,6 +11,7 @@ class Node(object):
     self.right = None
     self.left = None
 
+# helper function
 class Output(object):
   def __init__(self):
     self.traversal = []
@@ -21,14 +22,24 @@ class Output(object):
   def show(self):
     return self.traversal
 
+  def size(self):
+    return len(self.traversal)
+
+  def __len__(self):
+    return self.size()
+
+# tree 
 class Tree(object):
   def __init__(self, root):
     self.root = Node(root)  
+
 
   # postorder function
   """ Left->Right->Root """
   def postorder(self, root):
     if root:
+      output = Output()
+      
       # First recur on left child 
       self.postorder(root.left) 
   
@@ -36,10 +47,13 @@ class Tree(object):
       self.postorder(root.right) 
   
       # now print the data of node 
-      output = Output()
       output.push(root.value)
-      #self.traversal.append(root.value, self.traversal)
       print(root.value)
+
+  def print(self):
+    # creating object of class 
+    output = Output()
+    return output.show()
   
 
 
@@ -53,7 +67,7 @@ tree.root.left.right = Node(5)
 tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
-obj = Output()
+
 tree.postorder(tree.root)
-print(obj.show())
+print(tree.print())
 
