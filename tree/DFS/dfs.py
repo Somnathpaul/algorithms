@@ -32,14 +32,18 @@ class Output(object):
 class Tree(object):
   def __init__(self, root):
     self.root = Node(root)  
-
+  
+  def print(self):
+    # creating object of class 
+    output = Output()
+    return output.show()
 
   # postorder function
   """ Left->Right->Root """
   def postorder(self, root):
     if root:
       output = Output()
-      
+
       # First recur on left child 
       self.postorder(root.left) 
   
@@ -50,11 +54,25 @@ class Tree(object):
       output.push(root.value)
       print(root.value)
 
-  def print(self):
-    # creating object of class 
-    output = Output()
-    return output.show()
-  
+
+  def preorder(self, root):
+    if root:
+      output = Output()
+
+      # proorder function
+      """root -> left -> right"""
+
+      # print the root value 
+      output.push(root.value)
+      print(root.value)
+
+      # recur left value
+      self.preorder(root.left)
+
+      # recur the right value
+      self.preorder(root.right)
+
+
 
 
 
@@ -68,6 +86,7 @@ tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
 
+#tree.preorder(tree.root)
 tree.postorder(tree.root)
 print(tree.print())
 
