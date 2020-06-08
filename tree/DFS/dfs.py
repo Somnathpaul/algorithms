@@ -16,15 +16,13 @@ class Node(object):
 class Tree(object):
   def __init__(self, root):
     self.root = Node(root)  
+    self.output = Output()
   
 
   # postorder function
   """ Left->Right->Root """
   def postorder(self, root):
-    if root is None: 
-      return
     if root:
-      output = Output()
 
       # First recur on left child 
       self.postorder(root.left) 
@@ -33,8 +31,8 @@ class Tree(object):
       self.postorder(root.right) 
   
       # now print the data of node 
-      output.push(root.value)
-      print(root.value)
+      self.output.push(root.value)
+      #print(root.value)
 
 
   def preorder(self, root):
@@ -87,6 +85,5 @@ tree.root.right.right = Node(7)
 
 #tree.preorder(tree.root)
 tree.postorder(tree.root)
-o = Output()
-o.show()
-o.size()
+tree.output.show()
+
