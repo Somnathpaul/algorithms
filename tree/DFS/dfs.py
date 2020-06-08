@@ -15,7 +15,8 @@ class Node(object):
 # tree 
 class Tree(object):
   def __init__(self, root):
-    self.root = Node(root)  
+    self.root = Node(root)
+    # object of helper function
     self.output = Output()
   
 
@@ -31,20 +32,19 @@ class Tree(object):
       self.postorder(root.right) 
   
       # now print the data of node 
-      self.output.push(root.value)
+      self.output.postorder_push(root.value)
       #print(root.value)
 
 
   def preorder(self, root):
     if root:
-      output = Output()
 
       # proorder function
       """root -> left -> right"""
 
       # print the root value 
-      output.push(root.value)
-      print(root.value)
+      self.output.preorder_push(root.value)
+      #print(root.value)
 
       # recur left value
       self.preorder(root.left)
@@ -56,17 +56,22 @@ class Tree(object):
 # helper function
 class Output(object):
   def __init__(self):
-    self.traversal = []
+    self.traversal_postorder = []
+    self.traversal_preorder = []
   
-  def push(self, value):
-    self.traversal.append(value)
+  def postorder_push(self, value):
+    self.traversal_postorder.append(value)
+
+  def preorder_push(self, value):
+    self.traversal_preorder.append(value)
   
   def show(self):
-    print(self.traversal)
+    print(self.traversal_postorder)
+    print(self.traversal_preorder)
     print(self.size())
 
   def size(self):
-    return len(self.traversal)
+    return len(self.traversal_postorder)
 
   def __len__(self):
     return self.size()
@@ -83,7 +88,7 @@ tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
 
-#tree.preorder(tree.root)
+tree.preorder(tree.root)
 tree.postorder(tree.root)
 tree.output.show()
 
