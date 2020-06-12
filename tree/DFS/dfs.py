@@ -66,7 +66,7 @@ class Output(object):
     self.traversal_preorder.append(value)
   
   def show(self):
-    print(self.traversal_postorder)
+    print("postorder: ",self.traversal_postorder)
     print(self.traversal_preorder)
     print(self.size())
 
