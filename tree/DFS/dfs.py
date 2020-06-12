@@ -39,7 +39,7 @@ class Tree(object):
   def preorder(self, root):
     if root:
 
-      # proorder function
+      # preorder function
       """root -> left -> right"""
 
       # print the root value 
