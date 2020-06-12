@@ -42,8 +42,8 @@ class Helper(object):
         self.traversal.append(value)
     
     def p(self):
-        print(self.traversal)
-        print(self.size())
+        return self.traversal
+        #print(self.size())
 
     def size(self):
         return len(self.traversal)
@@ -65,4 +65,6 @@ tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
 tree.inorder(tree.root)
-tree.h.p()
+
+# the below function will get call from our test case function from test_inorder.py file
+#tree.h.p()
