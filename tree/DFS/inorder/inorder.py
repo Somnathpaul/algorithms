@@ -16,6 +16,7 @@ class Node(object):
 # tree
 class Tree(object):
     def __init__(self, root):
+        # object for node called and passed root value
         self.root = Node(root)
         # object for helper function
         self.h = Helper()
