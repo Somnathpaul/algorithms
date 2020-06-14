@@ -34,7 +34,7 @@ class Tree(object):
             #recur to the right value
             self.inorder(root.right)
 
-# helper function for the tree
+# helper class for the tree
 class Helper(object):
     def __init__(self):
         self.traversal = []

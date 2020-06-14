@@ -18,6 +18,7 @@ class Tree(object):
         # object for node called and passed with root value 
         self.root = Node(root)
         # object for helper function 
+        self.helper = Helper()
 
     # postorder function
     """ Left->Right->Root """
@@ -27,9 +28,27 @@ class Tree(object):
             self.postorder(root.left)
             # recur to the right value
             self.postorder(root.right)
-            # print the root value 
-            print(root.value)
+            # push the root value into the helper class list
+            self.helper.push(root.value)
+            #print(root.value)
 
+# helper class
+class Helper(object):
+    def __init__(self):
+        self.traversal = []
+
+    def push(self, value):
+        self.traversal.append(value)
+    
+    def print(self):
+        #print(self.traversal)
+        return self.traversal
+    
+    def size(self):
+        return len(self.traversal)
+
+    def __len__(self):
+        return self.size()
 
 tree = Tree(1)
 tree.root.left = Node(2)
@@ -40,3 +59,6 @@ tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
 tree.postorder(tree.root)
+
+# below function will get call from test file
+#tree.helper.print()
