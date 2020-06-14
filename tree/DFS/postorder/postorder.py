@@ -61,4 +61,4 @@ tree.root.right.right = Node(7)
 tree.postorder(tree.root)
 
 # below function will get call from test file
-#tree.helper.print()
+tree.helper.print()
