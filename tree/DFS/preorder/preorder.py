@@ -15,14 +15,40 @@ class Tree(object):
         # passing the value of root into object of node 
         self.root = Node(root)
         # object for helper function
+        self.helper = Helper()
 
     # preorder function
     # """root -> left -> right"""
     def preorder(self, root):
         if root:
-            print(root.value)
+            # push the root value into helper function list
+            self.helper.push(root.value)
+            # recur to the left root
             self.preorder(root.left)
+            # recur to the right root
             self.preorder(root.right)
+
+# helper class 
+class Helper(object):
+    def __init__(self):
+        self.traversal = []
+    
+    def push(self, value):
+        self.traversal.append(value)
+
+    def print(self):
+        #print(self.traversal)
+        return self.traversal
+    
+    def size(self):
+        return len(self.traversal)
+    
+    def __len__(self):
+        return self.size()
+
+
+
+
 
 # creating the tree
 tree = Tree(1)
@@ -34,3 +60,5 @@ tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
 tree.preorder(tree.root)
+
+# (tree.helper.print())
