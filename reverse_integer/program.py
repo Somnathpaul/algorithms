@@ -33,8 +33,8 @@ def reverse(x):
         return rev 
 
 
-X = 120
+#X = 120
 
-print(reverse(X))
+#print(reverse(X))
     
 
