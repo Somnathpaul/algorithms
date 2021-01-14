@@ -1,41 +1,67 @@
+import logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)-25s %(levelname)-7s %(lineno)-4s %(message)-8s')  
+# comment below section to start debuging 
+logger = logging.getLogger()
+logger.disabled = True
+
+
 def valid_parenthesis(str):
+    logging.debug("check for closing bracket")
     if str.startswith(("]", "}",")" )):
         return False
 
     open_list = ["[","{","("] 
-    #close_list = ["]","}",")"] 
     stack1 = [] 
-    stack2 = []
     mapping= { "(" : ")", "{": "}", "[": "]"}
+    check1 = 0
+    check2 = 0
 
-    list_of_str = list(str)
-    print(list_of_str)
-    for i in list_of_str:
+    for i in str:
         if i in open_list:
             stack1.append(i)
+            check1 = check1+1
+            print("stack1: ", stack1)
         else:
-            stack2.append(i)
-        
-    stack1.reverse()
-    print("stack 1: ",stack1)
-    print("stack 2: ",stack2)
-    for i in range(0,len(stack1)):
-        str = stack1.pop()
-        value = mapping.get(str)
-        print(str,value)
-        if  value == stack2.pop():
-            continue
-        else:
-            return False
-    return True
+            if len(stack1) != 0:
+                check2 = check2 + 1
+                st = stack1.pop()
+                value = mapping.get(st)
+                print("i: ", i)
+                print("st: ", st)
+                print("value: ", value)
+                if i == value:
+                    continue
+                else:
+                    return False
+            else:
+                return False
+
+    if check1 == check2:
+        return True
+    else:
+        return False
+   
 
 
-
-#print(valid_parenthesis("()"))
-print(valid_parenthesis("()[]{}"))
-#print(valid_parenthesis("(]"))
-#print(valid_parenthesis("([)]"))
+'''
+print(valid_parenthesis("()"))
 print("-"*10)
+
+print(valid_parenthesis("()[]{}"))
+print("-"*10)
+
+print(valid_parenthesis("(]"))
+print("-"*10)
+
+print(valid_parenthesis("([)]"))
+print("-"*10)
+
 print(valid_parenthesis("{[]}"))
 
 
+print("------ test case ---------")
+
+print(valid_parenthesis( '(('  ))
+'''
+print("------ test case ---------")
+print(valid_parenthesis( '(){}}{'  ))
